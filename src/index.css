@@ -1,0 +1,154 @@
+:root {
+  /* Color Palette - Editorial Burgundy Theme */
+  --bg-base: #3b1115; /* Deep burgundy/maroon */
+  --bg-dark: #240a0c;
+  --text-main: #e8e3d8; /* Silver / off-white */
+  --text-muted: #a39b8c;
+  
+  --accent-silver: #d1cbc1; /* Silver highlights */
+  --border-delicate: rgba(232, 227, 216, 0.25); /* More visible silver lines */
+  --border-heavy: rgba(232, 227, 216, 0.6);
+
+  /* Eskitme Varak (Aged Gold Leaf) Colors */
+  --gold-light: #dfc282;
+  --gold-main: #c5a059;
+  --gold-dark: #8c6d31;
+
+  /* Typography */
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Inter', sans-serif;
+  
+  /* Spacing & Layout */
+  --section-padding: 8rem 2rem;
+  --editorial-max-width: 1200px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #430c11; /* Dark red / kilim base color */
+  
+  /* 
+    Kilim Texture:
+    1. Highlight and Vignette for depth
+    2. Organic SVG noise for fabric imperfection
+    3. Repeating horizontal and vertical lines for the woven (warp/weft) kilim look
+  */
+  background-image: 
+    radial-gradient(circle at 50% 30%, rgba(130, 25, 35, 0.3) 0%, rgba(0, 0, 0, 0) 70%),
+    radial-gradient(ellipse at center, rgba(67, 12, 17, 0) 0%, rgba(15, 3, 5, 0.95) 100%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 500 500' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.12'/%3E%3C/svg%3E"),
+    repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(0, 0, 0, 0.25) 1px, rgba(0, 0, 0, 0.25) 2px),
+    repeating-linear-gradient(90deg, transparent, transparent 1px, rgba(0, 0, 0, 0.25) 1px, rgba(0, 0, 0, 0.25) 2px);
+  
+  background-attachment: fixed;
+  color: var(--text-main);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Base Editorial Utilities */
+.section-container {
+  max-width: var(--editorial-max-width);
+  margin: 0 auto;
+  padding: var(--section-padding);
+}
+
+.text-silver {
+  color: var(--accent-silver);
+}
+
+/* Editorial Specific Classes */
+.editorial-title {
+  font-size: clamp(3rem, 8vw, 7rem);
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  line-height: 0.9;
+}
+
+.editorial-meta {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--text-muted);
+}
+
+.drop-cap::first-letter {
+  float: left;
+  font-family: var(--font-serif);
+  font-size: 5.5rem;
+  line-height: 0.8;
+  padding-top: 4px;
+  padding-right: 8px;
+  padding-left: 3px;
+  color: var(--accent-silver);
+}
+
+.editorial-columns {
+  column-count: 1;
+  column-gap: 4rem;
+}
+@media (min-width: 768px) {
+  .editorial-columns {
+    column-count: 2;
+  }
+}
+
+.editorial-rule {
+  width: 100%;
+  height: 1px;
+  background-color: var(--border-delicate);
+  margin: 2rem 0;
+}
+
+.editorial-rule-heavy {
+  width: 100%;
+  height: 4px;
+  background-color: var(--border-heavy);
+  margin: 2rem 0;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-main);
+}
+
+/* Aged Gold Leaf Text Utility */
+.text-gold {
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-dark) 40%, var(--gold-main) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--gold-main); /* Fallback */
+  text-shadow: 0px 1px 2px rgba(0,0,0,0.4);
+}
